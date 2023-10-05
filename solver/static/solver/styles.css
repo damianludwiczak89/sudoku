@@ -1,0 +1,60 @@
+input {
+    
+    width: 30px;
+    height: 50px;
+    font-size: 1em;
+    font-family: Calibri, sans-serif; 
+    text-align: center;
+    border: none transparent;
+    outline: none;
+    font-weight: bold;
+    background-color: rgb(160, 194, 249);
+}
+
+table { 
+    border-collapse: collapse; 
+    font-family: Calibri, sans-serif; 
+    font-size: 1.5em;
+}
+colgroup, tbody { 
+    border: solid medium; 
+}
+td { 
+    border: solid thin; 
+    height: 2.4em; 
+    width: 2.4em; 
+    text-align: center; 
+    padding: 0; 
+}
+
+#sudoku {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px;
+    background-color: rgb(160, 194, 249);
+    margin: auto;
+    width: 70%;
+    margin-top: 30px;
+    border-radius: 50px;
+    border-style: solid;
+}
+
+#sudoku_index {
+
+    padding: 50px;
+    background-color: rgb(160, 194, 249);
+    margin: auto;
+    width: 70%;
+    margin-top: 30px;
+    border-radius: 50px;
+    border-style: solid;
+}
+
+
+
+#menu {
+    padding: 40px;
+}
+
