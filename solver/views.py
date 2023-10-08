@@ -117,6 +117,9 @@ def solution(request):
     for (index, _) in np.ndenumerate(board):
         if solution.validity(index) != True:
             return JsonResponse(False, safe=False, status=200)
+    for row in result:
+        if 0 in row:
+            return JsonResponse("no solution", safe=False, status=200)
     return JsonResponse(result, safe=False, status=200)
 
 def custom(request):

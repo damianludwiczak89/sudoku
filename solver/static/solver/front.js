@@ -1,4 +1,4 @@
-let valid_values = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+let valid_values = ["1", "2", "3", "4", "5", "6", "7", "8", "9", ""];
 
 // Get a 2d array of values in the sudoku grid
 function gatherValues() {
