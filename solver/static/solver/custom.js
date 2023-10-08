@@ -26,7 +26,7 @@ function gatherValues() {
             values.push(row_values);
             row = 0;
             row_values = []
-        }   
+        }
         });
     return values;
 };
@@ -41,7 +41,7 @@ function spreadValues(board) {
             column = 0;
             row++;
         }
-        
+
     });
 }
 
@@ -57,7 +57,7 @@ function isFinished() {
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    
+
     // Only 1-9 numbers input allowed
     document.querySelectorAll('input').forEach(function(input) {
         input.addEventListener("change", () =>{
@@ -65,9 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 input.value = "";
                 alert("Only numbers 1-9 allowed");
             }
-            console.log(gatherValues());
             if (isFinished() === true) {
-                console.log('finished');
                 fetch('/check_answer', {
                     method: 'POST',
                     body: JSON.stringify({
@@ -76,8 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
                   })
                   .then(response => response.json())
                   .then(result => {
-                      // Print result
-                      console.log(result);
                       if (result === true) {
                         alert("Solved");
                       }
@@ -89,23 +85,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    
+
     let solution = document.querySelector('#solution');
     solution.addEventListener("click", () => {
-        fetch('/solution', {
-            method: 'POST',
-            body: JSON.stringify({
-                board: gatherValues()
-            })
-          })
-          .then(response => response.json())
-          .then(result => {
-              // Print result
-              console.log(result);
-              spreadValues(result);
-
-                console.log('finished');
-                fetch('/check_answer', {
+            fetch('/check_answer', {
                     method: 'POST',
                     body: JSON.stringify({
                         board: gatherValues()
@@ -113,17 +96,21 @@ document.addEventListener('DOMContentLoaded', function() {
                   })
                   .then(response => response.json())
                   .then(result => {
-                      // Print result
-                      console.log(result);
-                      if (result === true) {
-                        console.log('trdadaue');
-                        return;
-                      }
-                      else {
+                      if (result === false) {
                         alert("Invalid values");
                       }
-                  });
-            
+                      else {
+                        fetch('/solution', {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                board: gatherValues()
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(result => {
+                            spreadValues(result);
+                        });
+            }
           });
         });
 });

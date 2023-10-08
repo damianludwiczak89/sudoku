@@ -15,9 +15,9 @@ class Sudoku():
     def __str__(self):
         return f"{self.board}"
 
-    
+
     def validity(self, index):
-        
+
         # Determine what values are in the row, column and 3x3 square of the given index
         row, column = index
         row_values = self.board[row]
@@ -28,7 +28,7 @@ class Sudoku():
         column /= 3
         square_row = 0 if row < 1 else 3 if row < 2 else 6
         square_column = 0 if column < 1 else 3 if column < 2 else 6
-        
+
         square_values1 = self.board[square_row][square_column:square_column + 3]
         square_values2 = self.board[square_row + 1][square_column:square_column + 3]
         square_values3 = self.board[square_row + 2][square_column:square_column + 3]
@@ -60,19 +60,19 @@ class Sudoku():
                     return result
             self.board[index[0]][index[1]] = 0
         return None
-    
+
     def blank_values(self, difficulty):
         if difficulty == "easy":
-            blanks = 40
+            blanks = 35
         elif difficulty == "medium":
-            blanks = 45
+            blanks = 40
         else:
-            blanks = 55
+            blanks = 50
         while np.count_nonzero(self.board == 0) < blanks:
             row = randint(0, 8)
             column = randint(0, 8)
             self.board[row][column] = 0
-        
+
         return
 
 
@@ -80,11 +80,11 @@ class Sudoku():
         self.backtrack()
         self.blank_values(difficulty)
         return self.board
-    
+
     def solve(self):
         self.backtrack()
         return self.board
-             
+
 
 def index(request):
     return render(request, "solver/index.html")
@@ -113,9 +113,11 @@ def solution(request):
     data = json.loads(request.body)
     board = data.get("board")
     solution = Sudoku(np.array(board))
-    solution = solution.solve().tolist()
-    print(solution)
-    return JsonResponse(solution, safe=False, status=200)
+    result = solution.solve().tolist()
+    for (index, _) in np.ndenumerate(board):
+        if solution.validity(index) != True:
+            return JsonResponse(False, safe=False, status=200)
+    return JsonResponse(result, safe=False, status=200)
 
 def custom(request):
 

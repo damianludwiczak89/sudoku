@@ -65,9 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 input.value = "";
                 alert("Only numbers 1-9 allowed");
             }
-            console.log(gatherValues());
             if (isFinished() === true) {
-                console.log('finished');
                 fetch('/check_answer', {
                     method: 'POST',
                     body: JSON.stringify({
@@ -76,8 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
                   })
                   .then(response => response.json())
                   .then(result => {
-                      // Print result
-                      console.log(result);
                       if (result === true) {
                         alert("Solved");
                       }
@@ -101,8 +97,6 @@ document.addEventListener('DOMContentLoaded', function() {
           })
           .then(response => response.json())
           .then(result => {
-              // Print result
-              console.log(result);
               spreadValues(result);
           });
         });
