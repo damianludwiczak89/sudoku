@@ -59,7 +59,7 @@ class Sudoku():
 
     def blank_values(self, difficulty):
         if difficulty == "easy":
-            blanks = 2
+            blanks = 30
         elif difficulty == "medium":
             blanks = 40
         elif difficulty == "hard":
