@@ -2,30 +2,27 @@ html {
     font-size: 16px;
 }
 
-/* Table Styles */
 table { 
     border-collapse: collapse; 
     font-family: Calibri, sans-serif; 
-    font-size: 1.5rem; /* Slightly larger font size */
-    margin: 0 auto; /* Center the table */
+    font-size: 1.5rem;
+    margin: 0 auto;
 }
 
 colgroup, tbody { 
     border: solid medium; 
 }
 
-/* Cell Styles */
 td { 
     border: solid thin; 
     height: 2.4em; 
     width: 2.4em; 
     text-align: center; 
     padding: 0; 
-    background-color: #4CAF50; /* Green background for cells */
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    background-color: #4CAF50;
+    transition: background-color 0.3s;
 }
 
-/* Subgrid Borders */
 td:nth-child(3n) {
     border-right: solid medium; 
 }
@@ -33,82 +30,81 @@ tr:nth-child(3n) td {
     border-bottom: solid medium; 
 }
 
-/* Hover Effect */
+
 td:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #45a049; 
 }
 
-/* Input Styles */
+
 input {
-    width: 2.5em; /* Slightly adjust width */
-    height: 2.5em; /* Adjust height to match */
-    font-size: 1.2em; /* Increased font size for better visibility */
+    width: 2.5em; 
+    height: 2.5em; 
+    font-size: 1.2em; 
     font-family: Calibri, sans-serif; 
     text-align: center;
-    border: none; /* Remove borders */
-    outline: none; /* Remove outline */
-    font-weight: bold; /* Bold text */
-    background-color: transparent; /* Transparent background for input */
+    border: none;
+    outline: none;
+    font-weight: bold;
+    background-color: transparent;
 }
 
-/* Ensure inputs fill td */
 td input {
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
+    width: 100%;
+    height: 100%;
 }
 
 
 #general {
-    background-color: #f9f9f9; /* Light grey background */
-    border: 1px solid #ddd; /* Subtle border */
-    border-radius: 0.625rem; /* Rounded corners, equivalent to 10px */
-    padding: 1.25rem; /* Responsive padding, equivalent to 20px */
-    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1); /* Soft shadow */
-    max-width: 31.25rem; /* Max width for larger screens (500px) */
-    width: 90%; /* Use percentage for responsive width */
-    margin: 1.25rem auto; /* Center horizontally with vertical spacing */
-    text-align: center; /* Center text */
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 0.625rem;
+    padding: 1.25rem;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+    max-width: 31.25rem;
+    width: 90%;
+    margin: 1.25rem auto;
+    text-align: center;
 }
 
 #general p {
-    font-size: 1rem; /* Responsive font size, equals 16px */
-    color: #333; /* Dark grey text for readability */
-    margin-bottom: 1.25rem; /* Space below the paragraph */
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 1.25rem;
 }
 
 button {
-    background-color: #4CAF50; /* Green button background */
-    color: white; /* White text */
-    border: none; /* Remove border */
-    padding: 0.75rem 1.5rem; /* Responsive padding, equivalent to 12px 24px */
-    font-size: 1rem; /* Responsive font size, equals 16px */
-    cursor: pointer; /* Pointer cursor on hover */
-    border-radius: 0.5rem; /* Rounded corners, equivalent to 8px */
-    transition: background-color 0.3s, transform 0.3s; /* Smooth hover effect */
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* Shadow with rem units */
-    margin: 0.625rem; /* 10px margin between buttons */
-    width: auto; /* Responsive based on content */
-    min-width: 7.5rem; /* Minimum width for smaller buttons */
-    max-width: 100%; /* Don't allow buttons to overflow */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    margin: 0.625rem;
+    width: auto;
+    min-width: 7.5rem;
+    max-width: 100%;
 }
 
 button:hover {
-    background-color: #45a049; /* Darker green on hover */
-    transform: translateY(-0.125rem); /* Slight hover movement, 2px */
-    box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+    background-color: #45a049;
+    transform: translateY(-0.125rem);
+    box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 600px) {
     #general {
-        padding: 1rem; /* Slightly less padding on mobile */
+        padding: 1rem;
     }
 
     #general p {
-        font-size: 0.875rem; /* Smaller font for better readability on mobile */
+        font-size: 0.875rem;
     }
 
     button {
-        width: 100%; /* Full width on small screens */
-        margin: 0.5rem 0; /* Vertical spacing between buttons */
+        width: 100%;
+        margin: 0.5rem 0;
     }
 }
