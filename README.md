@@ -13,4 +13,4 @@ fully installed, although for such a small project it might not be needed.
 ## Planned works
 
 - If user provides invalid values in the custom section and tries to get a solution - show which cells exactly are invalid
-- Consider changing prompting from Javascript's alert() to something more estetically pleasing
+- Consider changing prompting from Javascript's alert() to something more aesthetically pleasing
