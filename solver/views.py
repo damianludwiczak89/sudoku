@@ -1,11 +1,9 @@
 from django.shortcuts import render
 import numpy as np
-from random import randint, shuffle, choice
+from random import randint, shuffle
 import json
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
-
-# Create your views here.
 
 class Sudoku():
     def __init__ (self, board=np.array([[0 for i in range(9)]for j in range(9)])):
@@ -14,7 +12,6 @@ class Sudoku():
 
     def __str__(self):
         return f"{self.board}"
-
 
     def validity(self, index):
 
@@ -45,7 +42,6 @@ class Sudoku():
         else:
             return False
 
-
     def backtrack(self):
         if 0 not in self.board:
             return self.board
@@ -63,18 +59,16 @@ class Sudoku():
 
     def blank_values(self, difficulty):
         if difficulty == "easy":
-            blanks = 35
+            blanks = 2
         elif difficulty == "medium":
             blanks = 40
-        else:
+        elif difficulty == "hard":
             blanks = 50
         while np.count_nonzero(self.board == 0) < blanks:
             row = randint(0, 8)
             column = randint(0, 8)
             self.board[row][column] = 0
-
         return
-
 
     def generate(self, difficulty):
         self.backtrack()
@@ -89,13 +83,15 @@ class Sudoku():
 def index(request):
     return render(request, "solver/index.html")
 
-
+@csrf_exempt
 def play(request, difficulty):
+    if difficulty == "custom":
+        return JsonResponse([[0 for i in range(9)]for j in range(9)], safe=False, status=200) 
     sud = Sudoku(np.array([[0 for i in range(9)]for j in range(9)]))
-    sud = sud.generate(difficulty)
-    return render(request, "solver/play.html", {
-        "sudoku": sud,
-    })
+    sud = sud.generate(difficulty).tolist()
+    print(sud)
+    return JsonResponse(sud, safe=False, status=200)
+
 
 @csrf_exempt
 def check_answer(request):
@@ -121,9 +117,3 @@ def solution(request):
         if 0 in row:
             return JsonResponse("no solution", safe=False, status=200)
     return JsonResponse(result, safe=False, status=200)
-
-def custom(request):
-
-    return render(request, "solver/custom.html", {
-        "sudoku": np.array([[0 for i in range(9)]for j in range(9)]),
-    })
