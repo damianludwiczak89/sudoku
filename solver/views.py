@@ -89,7 +89,6 @@ def play(request, difficulty):
         return JsonResponse([[0 for i in range(9)]for j in range(9)], safe=False, status=200) 
     sud = Sudoku(np.array([[0 for i in range(9)]for j in range(9)]))
     sud = sud.generate(difficulty).tolist()
-    print(sud)
     return JsonResponse(sud, safe=False, status=200)
 
 
