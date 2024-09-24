@@ -75,7 +75,6 @@ window.Grid = function Grid(props) {
   React.useEffect(() => {
     // Run only after game has been fetched and set, then check if game is finished
     if (game.length > 0 && (isFinished() || triggerSolutionFetch === true)) {
-      console.log('check')
       fetch('/check_answer', {
         method: 'POST',
         body: JSON.stringify({
