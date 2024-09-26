@@ -32,6 +32,22 @@ window.Grid = function Grid(props) {
     return true
   }
 
+  function highlightWrongValues(indexes) {
+    for (let index of indexes) {
+      index = `${index[0]}${index[1]}`
+      let cell = document.getElementById(index)
+      cell.classList.add("wrong-cell")
+    }
+
+    setTimeout(() => {
+      for (let index of indexes) {
+        index = `${index[0]}${index[1]}`
+        const cell = document.getElementById(index)
+        cell.classList.remove("wrong-cell")
+      }
+    }, 6000)
+
+  }
 
   function handleChange(event) {
     // In case user clicked reveal solution, but values were invalid and did not get one, trigger solution fetch 
@@ -87,7 +103,7 @@ window.Grid = function Grid(props) {
             alert("Solved");
           }
           else {
-            alert("Invalid solution");
+            highlightWrongValues(result)
           }
       });
     }
@@ -123,11 +139,11 @@ window.Grid = function Grid(props) {
       })
       .then(response => response.json())
       .then(result => {
-        if (result === false) {
-          alert("Invalid values")
+        if (result[1] === false) {
+          highlightWrongValues(result[0])
           return
         } 
-        const getSolution = result.map(row => {
+        const getSolution = result[0].map(row => {
           return row.map(cell => ({
             value: cell,
             isEditable: cell === 0 ? true : false,
