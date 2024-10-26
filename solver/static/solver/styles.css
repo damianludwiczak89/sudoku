@@ -48,6 +48,18 @@ input {
     background-color: transparent;
 }
 
+.editable {
+    width: 2.5em; 
+    height: 2.5em; 
+    font-size: 1.2em; 
+    font-family: Calibri, sans-serif; 
+    text-align: center;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    background-color: transparent; 
+}
+
 td input {
     width: 100%;
     height: 100%;

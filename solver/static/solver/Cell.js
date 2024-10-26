@@ -7,6 +7,7 @@ window.Cell = function Cell(props) {
                 onChange={props.handleChange} 
                 id={props.index} 
                 maxLength={1}
+                
             />
         ) : (
             <span>{props.value}</span>
