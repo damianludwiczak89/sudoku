@@ -1,5 +1,5 @@
 window.Cell = function Cell(props) {
-    
+
     return (
         <td id={props.index}>{props.isEditable ? (
             <input 

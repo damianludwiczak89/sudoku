@@ -70,7 +70,6 @@ td input {
     transition: background-color 0.6s ease; /* Smooth transition for wrong cell highlight */
 }
 
-
 #general {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
