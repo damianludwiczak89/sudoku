@@ -10,6 +10,9 @@ window.Grid = function Grid(props) {
   // has been changed by the user
   const [startingValues, setStartingValues] = React.useState("")
 
+  // Needed so reveal solution button is triggered even if there was no change to the game values, if there are 
+  // invalid values, it highlights wrong cells again, not only once
+  const [triggerCheck, setTriggerCheck] = React.useState(false)
 
   // Triggers fetch call to get solution 
   const [triggerSolutionFetch, setTriggerSolutionFetch] = React.useState(false)
@@ -152,7 +155,7 @@ window.Grid = function Grid(props) {
         setGame(getSolution)
       })
     }
-  }, [triggerSolutionFetch])
+  }, [triggerCheck])
 
   return (
     <div id="general">
@@ -166,7 +169,7 @@ window.Grid = function Grid(props) {
           {rows}
         </tbody>
       </table>
-      <button onClick={() => setTriggerSolutionFetch(true)} >Reveal Solution</button>
+      <button onClick={() => (setTriggerSolutionFetch(true), setTriggerCheck(prevState => !prevState))}>Reveal Solution</button>
       <button onClick={props.back}>Back</button>
     </div>
 )
